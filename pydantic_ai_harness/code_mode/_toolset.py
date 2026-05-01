@@ -324,7 +324,7 @@ class CodeModeToolset(WrapperToolset[AgentDepsT]):
             nested_calls[tool_call_id] = call_part
 
             try:
-                result = await tool_manager.handle_call(call_part, wrap_validation_errors=False)
+                result = await tool_manager.handle_call(call_part)
             except (CallDeferred, ApprovalRequired) as e:
                 # No handler resolved the deferral. The sandbox can't round-trip to the
                 # caller, so we convert it to a UserError that propagates through
